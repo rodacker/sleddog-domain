@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Dog;
+namespace Rodacker\Sleddog\Dog\Owner;
 
 use InvalidArgumentException;
 
@@ -22,7 +22,7 @@ class Owner
             throw new InvalidArgumentException('name can not be empty');
         }
 
-        return new static($name);
+        return new self($name);
     }
 
     public function name(): string

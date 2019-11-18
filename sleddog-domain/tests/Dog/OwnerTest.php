@@ -5,7 +5,7 @@ namespace Rodacker\Sleddog\Test\Dog;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Rodacker\Sleddog\Dog\Breed\Breed;
-use Rodacker\Sleddog\Dog\Owner;
+use Rodacker\Sleddog\Dog\Owner\Owner;
 
 class OwnerTest extends TestCase
 {
