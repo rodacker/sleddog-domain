@@ -2,39 +2,8 @@
 
 namespace Rodacker\Sleddog\Team;
 
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
+use Rodacker\Sleddog\UniqueId;
 
-final class TeamId
+final class TeamId extends UniqueId
 {
-    /**
-     * @var UuidInterface
-     */
-    private $uuid;
-
-    public function __construct(UuidInterface $uuid = null)
-    {
-        if ($uuid === null) {
-            $uuid = Uuid::uuid4();
-        }
-
-        $this->uuid = $uuid;
-    }
-
-    public function id(): UuidInterface
-    {
-        return $this->uuid;
-    }
-
-    public static function fromString(string $uuid): self
-    {
-        $uuid = Uuid::fromString($uuid);
-
-        return new self($uuid);
-    }
-
-    public function __toString(): string
-    {
-        return $this->uuid->__toString();
-    }
 }
