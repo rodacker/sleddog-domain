@@ -8,9 +8,8 @@ use Rodacker\Sleddog\Dog\Breed\Breed;
 
 class BreedTest extends TestCase
 {
-    private const NAME = 'Alaskan Husky';
-    private const PUREBRED = true;
-    private const HALF_BREED = false;
+    private const HALF_BREED = 'Alaskan Husky';
+    private const PUREBRED = 'Siberian Husky';
 
     public function test_name_can_not_be_empty(): void
     {
@@ -21,15 +20,15 @@ class BreedTest extends TestCase
 
     public function test_create_purebred(): void
     {
-        $breed = Breed::createPurebred('Siberian Husky');
-        $this->assertSame('Siberian Husky', $breed->name());
+        $breed = Breed::createPurebred(self::PUREBRED);
+        $this->assertSame(self::PUREBRED, $breed->name());
         $this->assertTrue($breed->isPurebred());
     }
 
     public function test_create_mixed_breed(): void
     {
-        $breed = Breed::createMixedBreed('Alaskan Husky');
-        $this->assertSame('Alaskan Husky', $breed->name());
+        $breed = Breed::createMixedBreed(self::HALF_BREED);
+        $this->assertSame(self::HALF_BREED, $breed->name());
         $this->assertFalse($breed->isPurebred());
     }
 }
