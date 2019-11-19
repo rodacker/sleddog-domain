@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Team\Type;
+namespace Rodacker\Sleddog\Test\Team\Type;
 
 use PHPUnit\Framework\TestCase;
+use Rodacker\Sleddog\Team\Type\HitchType;
 
 class HitchTypeTest extends TestCase
 {
