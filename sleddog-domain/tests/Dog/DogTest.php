@@ -20,7 +20,7 @@ class DogTest extends TestCase
         $dogId = new DogId();
         $breed = Breed::createMixedBreed(self::BREED);
         $owner = Owner::create(self::OWNER);
-        $dog = $this->createDog($dogId, $breed, $owner);
+        $dog = DogTest::createDog($dogId, $breed, $owner);
 
         $this->assertSame($dogId, $dog->id());
         $this->assertSame(self::NAME, $dog->name());
@@ -31,7 +31,7 @@ class DogTest extends TestCase
 
     public function test_get_id_returns_valid_uuid(): void
     {
-        $dog = $this->createDog();
+        $dog = DogTest::createDog();
 
         $this->assertTrue(Uuid::isValid($dog->id()));
     }
@@ -39,7 +39,7 @@ class DogTest extends TestCase
     public function test_change_owner(): void
     {
         $owner = Owner::create(self::OWNER);
-        $dog = $this->createDog(null, null, $owner);
+        $dog = DogTest::createDog(null, null, $owner);
         $this->assertSame($owner, $dog->owner());
 
         $newOwner = Owner::create('McFoo');
@@ -49,7 +49,7 @@ class DogTest extends TestCase
 
     public function test_rename(): void
     {
-        $dog = $this->createDog();
+        $dog = DogTest::createDog();
         $this->assertSame(self::NAME, $dog->name());
 
         $dog->rename('Svartenas');
@@ -58,19 +58,19 @@ class DogTest extends TestCase
 
     public function test_dateofbirth_is_null_on_creation(): void
     {
-        $dog = $this->createDog();
+        $dog = DogTest::createDog();
         $this->assertNull($dog->dateOfBirth());
     }
 
     public function test_correct_dateofbirth(): void
     {
-        $dog = $this->createDog();
+        $dog = DogTest::createDog();
         $dateOfBirth = new DateTime('2019-01-02');
         $dog->correctDateOfBirth($dateOfBirth);
         $this->assertSame($dateOfBirth, $dog->dateOfBirth());
     }
 
-    private function createDog(DogId $dogId = null, Breed $breed = null, Owner $owner = null): Dog
+    public static function createDog(DogId $dogId = null, Breed $breed = null, Owner $owner = null): Dog
     {
         if ($dogId === null) {
             $dogId = new DogId();
