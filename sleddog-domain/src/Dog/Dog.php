@@ -18,7 +18,7 @@ class Dog
     private $id;
 
     /**
-     * @var DogChipNumber
+     * @var ChipNumber
      */
     private $chipNumber;
 

@@ -3,13 +3,13 @@
 namespace Rodacker\Sleddog\Test\Dog;
 
 use PHPUnit\Framework\TestCase;
-use Rodacker\Sleddog\Dog\DogChipNumber;
+use Rodacker\Sleddog\Dog\ChipNumber;
 
-class DogChipNumberTest extends TestCase
+class ChipNumberTest extends TestCase
 {
     public function test_id_is_string(): void
     {
-        $dogChipNumber = new DogChipNumber('foo');
+        $dogChipNumber = new ChipNumber('foo');
         $this->assertSame('foo', $dogChipNumber->__toString());
     }
 }

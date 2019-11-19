@@ -2,7 +2,7 @@
 
 namespace Rodacker\Sleddog\Dog;
 
-class DogChipNumber
+class ChipNumber
 {
     /**
      * @var string
