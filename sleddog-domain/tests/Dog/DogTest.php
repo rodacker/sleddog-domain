@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Dog;
+namespace Rodacker\Sleddog\Test\Dog;
 
 use DateTime;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Rodacker\Sleddog\Dog\Breed\Breed;
+use Rodacker\Sleddog\Dog\Dog;
+use Rodacker\Sleddog\Dog\DogId;
 use Rodacker\Sleddog\Dog\Owner\Owner;
 
 class DogTest extends TestCase
