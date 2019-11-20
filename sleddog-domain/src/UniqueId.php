@@ -26,13 +26,6 @@ class UniqueId
         return $this->uuid;
     }
 
-    public static function fromString(string $uuid): self
-    {
-        $uuid = Uuid::fromString($uuid);
-
-        return new self($uuid);
-    }
-
     public function __toString(): string
     {
         return $this->uuid->__toString();
