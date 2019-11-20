@@ -66,6 +66,11 @@ class Dog
         return $this->id;
     }
 
+    public function __toString(): string
+    {
+        return $this->id->__toString();
+    }
+
     public function owner(): Owner
     {
         return $this->owner;

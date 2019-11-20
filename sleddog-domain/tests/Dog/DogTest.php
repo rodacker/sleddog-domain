@@ -31,12 +31,21 @@ class DogTest extends TestCase
         $this->assertSame($owner, $dog->owner());
     }
 
-    public function test_get_id_returns_valid_uuid(): void
+    public function test_id_returns_valid_uuid(): void
     {
         $dog = DogTest::createDog();
 
         $this->assertTrue(Uuid::isValid($dog->id()));
     }
+
+    public function test_to_string_returns_uuid_string(): void
+    {
+        $dogId = new DogId();
+        $dog = DogTest::createDog($dogId);
+
+        $this->assertSame($dogId->__toString(), $dog->__toString());
+    }
+
 
     public function test_change_owner(): void
     {
