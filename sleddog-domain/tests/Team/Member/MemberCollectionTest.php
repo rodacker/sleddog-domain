@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Rodacker\Sleddog\Team\Member\MemberCollection;
 use Rodacker\Sleddog\Team\Member\TeamMember;
-use Rodacker\Sleddog\Team\Member\TeamMemberId;
 
 class MemberCollectionTest extends TestCase
 {
@@ -58,28 +57,6 @@ class MemberCollectionTest extends TestCase
         $this->assertCount(2, $collection);
 
         $collection->remove($memberMock);
-        $this->assertFalse($collection->has($memberMock));
-        $this->assertTrue($collection->has($anotherMemberMock));
-        $this->assertCount(1, $collection);
-    }
-
-    public function test_remove_by_member_id(): void
-    {
-        $memberMock = $this->createMemberMock(Uuid::NIL);
-        $anotherMemberMock = $this->createMemberMock('bar');
-
-        $collection = new MemberCollection();
-        $this->assertFalse($collection->has($memberMock));
-        $this->assertCount(0, $collection);
-
-        $collection->add($anotherMemberMock);
-        $collection->add($memberMock);
-        $this->assertTrue($collection->has($memberMock));
-        $this->assertTrue($collection->has($anotherMemberMock));
-        $this->assertCount(2, $collection);
-
-        $teamMemberId = TeamMemberId::fromString(Uuid::NIL);
-        $collection->removeByMemberId($teamMemberId);
         $this->assertFalse($collection->has($memberMock));
         $this->assertTrue($collection->has($anotherMemberMock));
         $this->assertCount(1, $collection);

@@ -37,14 +37,6 @@ class MemberCollection implements Countable, IteratorAggregate
         }
     }
 
-    public function removeByMemberId(TeamMemberId $memberId): void
-    {
-        $id = $memberId->__toString();
-        if ($this->hasKey($id)) {
-            $this->removeAtKey($id);
-        }
-    }
-
     public function getIterator()
     {
         return new ArrayIterator($this->members);

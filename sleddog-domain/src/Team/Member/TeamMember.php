@@ -21,11 +21,6 @@ class TeamMember
     ];
 
     /**
-     * @var TeamMemberId
-     */
-    private $id;
-
-    /**
      * @var Team
      */
     private $team;
@@ -40,22 +35,16 @@ class TeamMember
      */
     private $position;
 
-    public function __construct(TeamMemberId $teamMemberId, Team $team, Dog $dog, int $position)
+    public function __construct(Team $team, Dog $dog, int $position)
     {
-        $this->id = $teamMemberId;
         $this->team = $team;
         $this->dog = $dog;
         $this->position = $position;
     }
 
-    public function id(): TeamMemberId
-    {
-        return $this->id;
-    }
-
     public function __toString(): string
     {
-        return $this->id->__toString();
+        return $this->dog->__toString();
     }
 
     public function team(): Team
