@@ -5,8 +5,12 @@ namespace Rodacker\Sleddog\Test\Team\Member;
 use ArrayIterator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
+use Rodacker\Sleddog\Dog\DogId;
 use Rodacker\Sleddog\Team\Member\MemberCollection;
 use Rodacker\Sleddog\Team\Member\TeamMember;
+use Rodacker\Sleddog\Test\Dog\DogTest;
+use Rodacker\Sleddog\Test\Team\TeamTest;
 
 class MemberCollectionTest extends TestCase
 {
@@ -38,6 +42,20 @@ class MemberCollectionTest extends TestCase
 
         $collection->add($memberMock);
         $this->assertTrue($collection->has($memberMock));
+    }
+
+    public function test_has_dog_id_as_key_after_adding_member(): void
+    {
+        $uuid = Uuid::uuid4()->__toString();
+        $dogId = DogId::fromString($uuid);
+        $dog = DogTest::createDog($dogId);
+        $team = TeamTest::createTeam();
+        $member = new TeamMember($team, $dog, 1);
+        $collection = new MemberCollection();
+        $this->assertFalse($collection->hasKey($uuid));
+
+        $collection->add($member);
+        $this->assertTrue($collection->hasKey($uuid));
     }
 
     public function test_remove_member(): void

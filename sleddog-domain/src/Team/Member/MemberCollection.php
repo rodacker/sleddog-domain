@@ -24,7 +24,7 @@ class MemberCollection implements Countable, IteratorAggregate
         $this->members[$id] = $member;
     }
 
-    private function hasKey(string $id)
+    public function hasKey(string $id)
     {
         return array_key_exists($id, $this->members);
     }
