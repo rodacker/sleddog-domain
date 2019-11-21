@@ -5,7 +5,6 @@ namespace Rodacker\Sleddog\Test\Team\Member;
 use ArrayIterator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Ramsey\Uuid\Uuid;
 use Rodacker\Sleddog\Team\Member\MemberCollection;
 use Rodacker\Sleddog\Team\Member\TeamMember;
 
