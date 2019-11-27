@@ -4,7 +4,7 @@ namespace Rodacker\Sleddog\Test\Training\Distance;
 
 use PHPUnit\Framework\TestCase;
 use Rodacker\Sleddog\Training\Distance\DistanceUnit;
-use Rodacker\Sleddog\Training\Distance\Unit;
+use Rodacker\Sleddog\Training\Unit;
 
 class DistanceUnitTest extends TestCase
 {

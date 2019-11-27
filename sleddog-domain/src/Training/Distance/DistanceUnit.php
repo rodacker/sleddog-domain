@@ -2,6 +2,8 @@
 
 namespace Rodacker\Sleddog\Training\Distance;
 
+use Rodacker\Sleddog\Training\Unit;
+
 class DistanceUnit implements Unit
 {
     public const DISTANCE_MILES = 'miles';

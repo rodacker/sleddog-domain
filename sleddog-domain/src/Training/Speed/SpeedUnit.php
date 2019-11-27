@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Training;
+namespace Rodacker\Sleddog\Training\Speed;
 
-use Rodacker\Sleddog\Training\Distance\Unit;
+use Rodacker\Sleddog\Training\Unit;
 
 class SpeedUnit implements Unit
 {

@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Test\Training;
+namespace Rodacker\Sleddog\Test\Training\Speed;
 
 use PHPUnit\Framework\TestCase;
-use Rodacker\Sleddog\Training\Distance\DistanceUnit;
-use Rodacker\Sleddog\Training\Distance\Unit;
-use Rodacker\Sleddog\Training\SpeedUnit;
+use Rodacker\Sleddog\Training\Unit;
+use Rodacker\Sleddog\Training\Speed\SpeedUnit;
 
 class SpeedUnitTest extends TestCase
 {
