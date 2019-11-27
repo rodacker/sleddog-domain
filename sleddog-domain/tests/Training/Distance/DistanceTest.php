@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Test\Training;
+namespace Rodacker\Sleddog\Test\Training\DIstance;
 
 use PHPUnit\Framework\TestCase;
 use Rodacker\Sleddog\Training\Distance\Distance;
