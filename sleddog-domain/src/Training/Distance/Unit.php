@@ -4,5 +4,5 @@ namespace Rodacker\Sleddog\Training\Distance;
 
 interface Unit
 {
-
+    public function unit(): string;
 }

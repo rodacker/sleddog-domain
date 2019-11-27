@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Rodacker\Sleddog\Test\Training\DIstance;
+namespace Rodacker\Sleddog\Test\Training\Distance;
 
 use PHPUnit\Framework\TestCase;
 use Rodacker\Sleddog\Training\Distance\DistanceUnit;
 use Rodacker\Sleddog\Training\Distance\Unit;
 
-class DitanceUnitTest extends TestCase
+class DistanceUnitTest extends TestCase
 {
     public function test_create_km_distance_unit(): void
     {
