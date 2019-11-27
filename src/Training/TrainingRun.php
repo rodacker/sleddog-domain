@@ -138,4 +138,9 @@ class TrainingRun
 
         return $speed;
     }
+
+    public function __toString(): string
+    {
+        return $this->id->id()->__toString();
+    }
 }

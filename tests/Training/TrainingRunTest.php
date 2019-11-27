@@ -42,6 +42,7 @@ class TrainingRunTest extends TestCase
         );
 
         $this->assertSame($trainingRunId, $trainingRun->id());
+        $this->assertSame($trainingRunId->id()->__toString(), $trainingRun->__toString());
         $this->assertSame($team, $trainingRun->team());
         $this->assertSame($date, $trainingRun->date());
         $this->assertSame($distance, $trainingRun->distance());
