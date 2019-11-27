@@ -5,7 +5,7 @@ namespace Rodacker\Sleddog\Team;
 use Rodacker\Sleddog\Dog\Dog;
 use Rodacker\Sleddog\Team\Member\MemberCollection;
 use Rodacker\Sleddog\Team\Member\TeamMember;
-use Rodacker\Sleddog\Team\Member\TeamMemberId;
+use Rodacker\Sleddog\Team\TrainingRun\TrainingRunCollection;
 use Rodacker\Sleddog\Team\Type\HitchType;
 use Rodacker\Sleddog\Training\TrainingRun;
 
@@ -39,7 +39,7 @@ class Team
     private $members;
 
     /**
-     * @var TrainingRun[]
+     * @var TrainingRunCollection
      */
     private $trainingRuns;
 
@@ -52,7 +52,7 @@ class Team
         }
         $this->name = $name;
         $this->members = new MemberCollection();
-        $this->trainingRuns = [];
+        $this->trainingRuns = new TrainingRunCollection();
     }
 
     public function id(): TeamId
@@ -133,23 +133,19 @@ class Team
         }
     }
 
-    public function trainingRuns(): array
+    public function trainingRuns(): TrainingRunCollection
     {
         return $this->trainingRuns;
     }
 
-    /**
-     * @param TrainingRun
-     */
     public function addTrainingRun(TrainingRun $trainingRun): void
     {
-        $trainingRun->setTeam($this);
         $this->trainingRuns->add($trainingRun);
     }
 
-    public function removeTrainingRun(int $key): void
+    public function removeTrainingRun(TrainingRun $trainingRun): void
     {
-        $this->trainingRuns->remove($key);
+        $this->trainingRuns->remove($trainingRun);
     }
 
     private function sizeIsValid($size): bool

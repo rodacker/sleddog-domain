@@ -11,9 +11,12 @@ use Rodacker\Sleddog\Team\Member\MemberCollection;
 use Rodacker\Sleddog\Team\Team;
 use Rodacker\Sleddog\Team\TeamId;
 use Rodacker\Sleddog\Team\TeamIsFullException;
+use Rodacker\Sleddog\Team\TrainingRun\TrainingRunCollection;
 use Rodacker\Sleddog\Team\Type\HitchType;
 use Rodacker\Sleddog\Test\Dog\DogTest;
 use Rodacker\Sleddog\Test\Team\Member\TeamMemberTest;
+use Rodacker\Sleddog\Test\Training\TrainingRunTest;
+use Rodacker\Sleddog\Training\TrainingRunId;
 
 class TeamTest extends TestCase
 {
@@ -110,10 +113,12 @@ class TeamTest extends TestCase
         $this->assertEmpty($members);
     }
 
-    public function test_training_runs_is_empty_on_creation(): void
+    public function test_training_runs_is_empty_collection_on_creation(): void
     {
         $team = $this->createTeam();
-        $this->assertSame([], $team->trainingRuns());
+        $trainingRuns = $team->trainingRuns();
+        $this->assertInstanceOf(TrainingRunCollection::class, $trainingRuns);
+        $this->assertEmpty($trainingRuns);
     }
 
     public function test_can_not_add_dog_if_team_is_full(): void
@@ -209,6 +214,39 @@ class TeamTest extends TestCase
         $team->removeDog($dog);
         $this->assertCount(0, $members);
         $this->assertFalse($members->hasKey($dog->__toString()));
+    }
+
+    public function test_add_trainings_run(): void
+    {
+        $trainingsRun = TrainingRunTest::createTrainingRun();
+        $team = self::createTeam();
+        $this->assertCount(0, $team->trainingRuns());
+        $team->addTrainingRun($trainingsRun);
+
+        $runs = $team->trainingRuns();
+        $this->assertCount(1, $runs);
+        foreach ($runs as $run) {
+            $this->assertSame($trainingsRun, $run);
+            break;
+        }
+    }
+
+    public function test_remove_trainings_run(): void
+    {
+        $trainigRunId = new TrainingRunId();
+        $trainingRun = TrainingRunTest::createTrainingRun($trainigRunId);
+        $team = self::createTeam();
+
+        $this->assertCount(0, $team->trainingRuns());
+        $team->addTrainingRun($trainingRun);
+
+        $runs = $team->trainingRuns();
+        $this->assertCount(1, $runs);
+        foreach ($runs as $run) {
+            $this->assertSame($trainingRun, $run);
+            break;
+        }
+        $team->removeTrainingRun($trainingRun);
     }
 
     private function expectSizeNeedsToBeGreaterThanZero(): void
